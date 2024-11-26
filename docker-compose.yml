@@ -1,0 +1,26 @@
+
+services:
+  node:
+    image: node:20.17.0  
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"  
+      - "9229:9229" 
+    environment:
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    command: sh -c "npm install && npx -y wait-on tcp:postgres:5432 && npm run migration && npm run dev" 
+  postgres:
+    image: "postgres:14.5"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:
+      POSTGRES_USER: "compass_car"
+      POSTGRES_PASSWORD: "compass_car"
+      POSTGRES_DB: "compass_car"
+

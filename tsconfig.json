@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "es2021"
+        ],
+        "target": "es2021",
+        "module": "Node16",
+        "outDir": ".build",
+        "moduleResolution": "node16",
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "incremental": true,
+        "skipLibCheck": true,
+        "strict": false,
+        "noEmitOnError": false
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}
