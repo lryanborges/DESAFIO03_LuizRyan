@@ -6,7 +6,7 @@ import { HttpError } from "../exceptions/http-error.js"
 export const authMiddleware = catchError(async (req, _, next) => {
     try {
         const authHeader = req.headers["authorization"]?.split(" ").at(1)
-        jwt.verify(env().JWT_SECRET, authHeader)
+        jwt.verify(authHeader, env().JWT_SECRET)
         next()
     } catch {
         return next(new HttpError(

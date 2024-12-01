@@ -2,11 +2,12 @@ import { ResourceAlredyExistsError } from "../../../framework/express/exceptions
 import { CreateCarDTO } from "../../interfaces/dtos/car/create-car-dto.js"
 import { CreateCar } from "../../interfaces/use-cases/car/create-car.js"
 import CarItem from "../../models/car-item.js"
+import Car from "../../models/car.js"
 import { createCarParser } from "../../parsers/car/create-car-parser.js"
 import { carRepository } from "../../repositories/car-repository.js"
 
 export const createCar = new class implements CreateCar {
-    public async exec(data: CreateCarDTO): Promise<void> {
+    public async exec(data: CreateCarDTO): Promise<Car> {
 
         const car = createCarParser.parse(data);
 
@@ -27,6 +28,8 @@ export const createCar = new class implements CreateCar {
         });
 
         await carRepository.manager.save(carItems);
+
+        return newCar;
 
     }
 }
