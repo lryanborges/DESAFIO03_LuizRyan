@@ -1,17 +1,25 @@
 import { HttpError } from "../../../framework/express/exceptions/http-error.js"
+import { ResourceAlredyExistsError } from "../../../framework/express/exceptions/resource-alredy-exists-error.js"
 import { ResourceNotFoundError } from "../../../framework/express/exceptions/resource-not-found-error.js"
 import { UpdateCarDTO } from "../../interfaces/dtos/car/update-car-dto.js"
 import { UpdateCar } from "../../interfaces/use-cases/car/update-car.js"
 import CarItem from "../../models/car-item.js"
+import Car from "../../models/car.js"
 import { updateCarParser } from "../../parsers/car/update-car-parser.js"
 import { uuidParser } from "../../parsers/uuid-parser.js"
 import { carItemRepository } from "../../repositories/car-item-repository.js"
 import { carRepository } from "../../repositories/car-repository.js"
 
 export const updateCar = new class implements UpdateCar {
-    async exec(id: string, data: UpdateCarDTO): Promise<void> {
+    async exec(id: string, data: UpdateCarDTO): Promise<Car> {
         uuidParser.parse(id)
         const editData = updateCarParser.parse(data)
+
+        const carExists = await carRepository.findOne({ where: { licensePlate : editData.licensePlate } })
+
+        if (carExists && carExists.id != id && editData.licensePlate) {
+            throw new ResourceAlredyExistsError("car")
+        }
 
         const car = await carRepository.findOne({ where: { id } })
 
@@ -53,6 +61,8 @@ export const updateCar = new class implements UpdateCar {
         }
 
         await carRepository.save(car)
+
+        return car;
 
     }
 }
