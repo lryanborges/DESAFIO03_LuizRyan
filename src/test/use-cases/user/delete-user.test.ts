@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 describe("Delete user", () => {
     test("Should delete a user successfully", async () => {
-        const userToDelete = await findManyUser.exec({ excludedAt: null, name: "Ryan"});
+        const userToDelete = await findManyUser.exec({ name: "Ryan"}); // pra n excluir o administrador
 
         expect(userToDelete).not.toBeNull();
 
