@@ -8,7 +8,7 @@ export const deleteUser = new class implements DeleteUser {
     async exec(id: string): Promise<User> {
         uuidParser.parse(id)
         const user = await userRepository.findOne({ where: { id } })
-        if (!user) throw new ResourceNotFoundError("User not found")
+        if (!user) throw new ResourceNotFoundError("user")
         user.excludedAt = new Date()
         userRepository.save(user)
 
