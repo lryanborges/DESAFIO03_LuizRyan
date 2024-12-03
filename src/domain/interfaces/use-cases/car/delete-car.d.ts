@@ -1,4 +1,4 @@
 
 export interface DeleteCar {
-    exec(data: string): Promise<void>
+    exec(data: string): Promise<Car>
 } 
