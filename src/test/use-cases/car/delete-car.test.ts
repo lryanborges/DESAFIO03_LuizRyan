@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 describe("Delete car", () => {
     test("Should delete a car successfully", async () => {
-        const carToDelete = await findManyCar.exec({ status: "ativo" });
+        const carToDelete = await findManyCar.exec({ status: "ativo", model: "Model"}); // pra só excluir as geradas por testes
     
         expect(carToDelete).not.toBeNull();
     
