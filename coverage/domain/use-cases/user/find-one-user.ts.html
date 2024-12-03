@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for domain/use-cases/car/find-one-car.ts</title>
+    <title>Code coverage report for domain/use-cases/user/find-one-user.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/use-cases/car</a> find-one-car.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/use-cases/user</a> find-one-user.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -83,27 +83,7 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -114,7 +94,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -124,54 +103,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { datasource } from "../../../data/data-source.js"
-import { ResourceNotFoundError } from "../../../framework/express/exceptions/resource-not-found-error.js"
-import { CarDTO, Status } from "../../interfaces/dtos/car/car-dto.js"
-import { FindOneCar } from "../../interfaces/use-cases/car/find-one-car.js"
-import CarItem from "../../models/car-item.js"
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ResourceNotFoundError } from "../../../framework/express/exceptions/resource-not-found-error.js"
+import { UserDTO } from "../../interfaces/dtos/user/user-dto.js"
+import { FindOneUser } from "../../interfaces/use-cases/user/find-one-user.js"
 import { uuidParser } from "../../parsers/uuid-parser.js"
-import { carRepository } from "../../repositories/car-repository.js"
+import { userRepository } from "../../repositories/user-repository.js"
 &nbsp;
-&nbsp;
-export const findOneCar = new class implements FindOneCar {
-    async exec(id: string): Promise&lt;CarDTO&gt; {
+export const findOneUser = new class implements FindOneUser {
+    async exec(id: string): Promise&lt;UserDTO&gt; {
         uuidParser.parse(id)
-        const found = await carRepository.findOne({ where: { id } })
-&nbsp;
-        if (!found) {
-            throw new ResourceNotFoundError("car")
+        const user = await userRepository.findOne({ where: { id } })
+        if (!user || user.excludedAt) throw new ResourceNotFoundError("user")
+        return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            createdAt: user.createdAt,
+            excludedAt: user.excludedAt
         }
-&nbsp;
-        const carItems = await datasource.getRepository("cars_items").findBy({ car: found })
-&nbsp;
-&nbsp;
-        const returnValue: CarDTO = {
-            id: found.id,
-            licensePlate: found.licensePlate,
-            brand: found.brand,
-            model: found.model,
-            km: found.km,
-            year: found.year,
-            price: found.price,
-            createdAt: found.createdAt,
-            items: carItems.map((item: CarItem) =&gt; item.name),
-            status: found.status as Status
-        }
-&nbsp;
-        return returnValue
     }
 }
 &nbsp;</pre></td></tr></table></pre>
