@@ -1,12 +1,12 @@
 import { HttpError } from "../../../framework/express/exceptions/http-error.js";
 import { ResourceNotFoundError } from "../../../framework/express/exceptions/resource-not-found-error.js";
 import { DeleteOrder } from "../../interfaces/use-cases/order/delete-order.js";
-import { OrderStatus } from "../../models/order.js";
+import Order, { OrderStatus } from "../../models/order.js";
 import { uuidParser } from "../../parsers/uuid-parser.js";
 import { orderRepository } from "../../repositories/order-repository.js";
 
 export const deleteOrder = new class implements DeleteOrder {
-    async exec(id: string): Promise<void> {
+    async exec(id: string): Promise<Order> {
         uuidParser.parse(id)
         const order = await orderRepository.findOne({ where: { id } });
 
@@ -20,6 +20,6 @@ export const deleteOrder = new class implements DeleteOrder {
 
         order.status = OrderStatus.Canceled;
 
-        await orderRepository.save(order);
+        return await orderRepository.save(order);
     }
 }
