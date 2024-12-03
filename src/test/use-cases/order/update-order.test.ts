@@ -1,6 +1,7 @@
 import { CreateCarDTO } from "../../../domain/interfaces/dtos/car/create-car-dto.js";
 import { CreateClientDTO } from "../../../domain/interfaces/dtos/client/create-client-dto.js";
 import { CreateOrderDTO } from "../../../domain/interfaces/dtos/order/create-order-dto.js";
+import { OrderStatus } from "../../../domain/models/order.js";
 import { createCar } from "../../../domain/use-cases/car/create-car.js";
 import { createClient } from "../../../domain/use-cases/client/create-client.js";
 import { createOrder } from "../../../domain/use-cases/order/create-order.js";
@@ -56,7 +57,7 @@ describe("Update order", () => {
     test("Should update an order successfully", async () => {
         const updateOrderData: UpdateOrderDTO = {
             cep: "69907540",
-            status: "aprovado",
+            status: OrderStatus.Approved,
             cpf: generateCPF().replace(/\D/g, "")
         }
 
@@ -64,7 +65,7 @@ describe("Update order", () => {
 
         expect(order).toHaveProperty("id");
         expect(order.cep).toBe("69907540");
-        expect(order.status).toBe("aprovado");
+        expect(order.status).toBe(OrderStatus.Approved);
     });
 
     test("Should not allow update an order with wrong id", async () => {
@@ -72,7 +73,7 @@ describe("Update order", () => {
 
         const updateOrderData: UpdateOrderDTO = {
             cep: "69907540",
-            status: "aprovado",
+            status: OrderStatus.Approved,
             cpf: generateCPF().replace(/\D/g, "")
         }
 
