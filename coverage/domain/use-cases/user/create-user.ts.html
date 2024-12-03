@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for domain/use-cases/car/create-car.ts</title>
+    <title>Code coverage report for domain/use-cases/user/create-user.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/use-cases/car</a> create-car.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/use-cases/user</a> create-user.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>35/35</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>35/35</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -88,17 +88,21 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -108,66 +112,32 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ResourceAlredyExistsError } from "../../../framework/express/exceptions/resource-alredy-exists-error.js"
-import { CreateCarDTO } from "../../interfaces/dtos/car/create-car-dto.js"
-import { CreateCar } from "../../interfaces/use-cases/car/create-car.js"
-import CarItem from "../../models/car-item.js"
-import Car from "../../models/car.js"
-import { createCarParser } from "../../parsers/car/create-car-parser.js"
-import { carRepository } from "../../repositories/car-repository.js"
+import { CreateUserDTO } from "../../interfaces/dtos/user/create-user-dto.js"
+import { CreateUser } from "../../interfaces/use-cases/user/create-user.js"
+import User from "../../models/user.js"
+import { createUserParser } from "../../parsers/user/create-user-parser.js"
+import { userRepository } from "../../repositories/user-repository.js"
+import * as argon from "argon2"
+export const createUser = new (class implements CreateUser {
+    public async exec(data: CreateUserDTO): Promise&lt;User&gt; {
+        const user = createUserParser.parse(data)
+        const userExist = await userRepository.findOne({
+            where: { email: user.email }
+        })
 &nbsp;
-export const createCar = new class implements CreateCar {
-    public async exec(data: CreateCarDTO): Promise&lt;Car&gt; {
-&nbsp;
-        const car = createCarParser.parse(data);
-&nbsp;
-        // check if same car
-        const carExists = await carRepository.findOne({ where: { licensePlate : car.licensePlate } })
-&nbsp;
-        if (carExists) {
-            throw new ResourceAlredyExistsError("car")
+        if (userExist) {
+            throw new ResourceAlredyExistsError("user")
         }
 &nbsp;
-        const newCar = carRepository.create(car)
+        const hashedPassword = await argon.hash(user.password)
+        const newUser = userRepository.create({ ...user, password: hashedPassword })
+        await userRepository.save(newUser)
 &nbsp;
-        await carRepository.save(newCar)
-&nbsp;
-        const carItems = data.items.map(itemName =&gt; {
-            const carItem = new CarItem(itemName, newCar);
-            return carItem;
-        });
-&nbsp;
-        await carRepository.manager.save(carItems);
-&nbsp;
-        return newCar;
-&nbsp;
+        return newUser;
     }
-}
+})
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
