@@ -1,9 +1,11 @@
+import { findManyCar } from "../../../domain/use-cases/car/find-many-car.js";
 import { findOneCar } from "../../../domain/use-cases/car/find-one-car.js";
 import { v4 as uuidv4 } from "uuid";
 
 describe("Find one car", () => {
     test("Should find one specific car by id", async () => {
-        const carId = "f6eaf30f-cc26-4341-89cf-6573420a7a61";
+        const carToFind = await findManyCar.exec({ licensePlateEnd: "ABD1234" });
+        const carId = carToFind.data.at(0).id;
         const car = await findOneCar.exec(carId);
 
         expect(car.id).toBe(carId);
