@@ -23,6 +23,7 @@
     "axios": "^1.7.7",
     "compass-car": "file:",
     "cors": "^2.8.5",
+    "cpf": "^2.0.1",
     "deepmerge": "^4.3.1",
     "express": "^4.21.0",
     "helmet": "^8.0.0",
