@@ -6,9 +6,10 @@ import { updateOrderParser } from "../../parsers/order/update-order-parser.js"
 import { orderRepository } from "../../repositories/order-repository.js"
 import { zipCodeParser } from "../../parsers/zip-code-parser.js"
 import { uuidParser } from "../../parsers/uuid-parser.js"
+import Order from "../../models/order.js"
 
 export const updateOrder = new class implements UpdateOrder{
-    async exec(id: string, data: UpdateOrderDTO): Promise<void> {
+    async exec(id: string, data: UpdateOrderDTO): Promise<Order> {
         uuidParser.parse(id)
         const update = updateOrderParser.parse(data)
         const order = await orderRepository.findOne({ where: { id } })
@@ -30,6 +31,6 @@ export const updateOrder = new class implements UpdateOrder{
             if(update[key]) order[key] = update[key]
         }
 
-        await orderRepository.save(order)
+        return await orderRepository.save(order)
     }
 }

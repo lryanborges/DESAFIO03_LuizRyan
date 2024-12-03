@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for domain/use-cases/client/update-client.ts</title>
+    <title>Code coverage report for domain/parsers/order/update-order-parser.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/use-cases/client</a> update-client.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/parsers/order</a> update-order-parser.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -83,7 +83,9 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -93,9 +95,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -103,26 +102,33 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { UpdateClientDTO } from "../../interfaces/dtos/client/update-client-dto.js"
-import { UpdateClient } from "../../interfaces/use-cases/client/update-client.js"
-import { clientRepository } from "../../repositories/client-repository.js"
-import { updateClientParser } from "../../parsers/client/update-client-parser.js"
-import { ResourceNotFoundError } from "../../../framework/express/exceptions/resource-not-found-error.js"
-import { uuidParser } from "../../parsers/uuid-parser.js"
-import Client from "../../models/client.js"
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { z } from "zod"
+import { CPFParser } from "../cpf-parser.js"
+import { zipCodeParser } from "../zip-code-parser.js"
 &nbsp;
-export const updateClient = new class implements UpdateClient {
-    async exec(id: string, data: UpdateClientDTO): Promise&lt;Client&gt; {
-        uuidParser.parse(id)
-        const client = await clientRepository.findOne({ where: { id } })
-        if (!client || client.excludedAt) {
-            throw new ResourceNotFoundError("client")
-        }
-        const update = updateClientParser.parse(data)
-        const updatedClient = {...client, ...update}
-        return await clientRepository.save(updatedClient);
+export const updateOrderParser = z.object({
+    dateStart: z
+        .string()
+        .datetime()
+        .refine(
+<span class="fstat-no" title="function not covered" >            (date) =&gt; new Date(date) &gt;= new Date(),</span>
+            { message: "Start DateTime cannot be in the past" }
+        ),
+    dateEnd: z.string().datetime(),
+    cep: zipCodeParser,
+    status: z.enum(["cancelado", "aprovado"]),
+    cpf: CPFParser
+}).strict().partial().refine(({ dateStart, dateEnd }) =&gt;
+    dateStart <span class="branch-0 cbranch-no" title="branch not covered" >? new Date(dateEnd) &gt;= new Date(dateStart) </span>: true,
+    {
+        message: "End DateTime cannot be before Start DateTime"
     }
-}
+)
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
