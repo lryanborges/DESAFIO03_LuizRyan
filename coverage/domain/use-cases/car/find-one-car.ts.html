@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for domain/models/car-item.ts</title>
+    <title>Code coverage report for domain/use-cases/car/find-one-car.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">domain/models</a> car-item.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/use-cases/car</a> find-one-car.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/36</span>
+                <span class='fraction'>37/37</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>36/36</span>
+                <span class='fraction'>37/37</span>
             </div>
         
             
@@ -99,7 +99,22 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -113,13 +128,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1041x</span>
-<span class="cline-any cline-yes">1041x</span>
-<span class="cline-any cline-yes">1041x</span>
-<span class="cline-any cline-yes">1041x</span>
-<span class="cline-any cline-yes">1041x</span>
-<span class="cline-any cline-yes">1041x</span>
-<span class="cline-any cline-yes">1041x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -129,47 +137,42 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
-    Column,
-    CreateDateColumn,
-    Entity,
-    JoinColumn,
-    ManyToOne,
-    PrimaryGeneratedColumn
-} from "typeorm"
-import Car from "./car.js"
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { datasource } from "../../../data/data-source.js"
+import { ResourceNotFoundError } from "../../../framework/express/exceptions/resource-not-found-error.js"
+import { CarDTO, Status } from "../../interfaces/dtos/car/car-dto.js"
+import { FindOneCar } from "../../interfaces/use-cases/car/find-one-car.js"
+import CarItem from "../../models/car-item.js"
+import { uuidParser } from "../../parsers/uuid-parser.js"
+import { carRepository } from "../../repositories/car-repository.js"
 &nbsp;
-@Entity("cars_items")
-export default class CarItem {
 &nbsp;
-    constructor(
-        name: string,
-        car: Car
-    ) {
-        this.name = name
-        this.car = car
-        this.createdAt = new Date() 
+export const findOneCar = new class implements FindOneCar {
+    async exec(id: string): Promise&lt;CarDTO&gt; {
+        uuidParser.parse(id)
+        const found = await carRepository.findOne({ where: { id } })
+&nbsp;
+        if (!found) {
+            throw new ResourceNotFoundError("car")
+        }
+&nbsp;
+        const carItems = await datasource.getRepository("cars_items").findBy({ car: found })
+&nbsp;
+&nbsp;
+        const returnValue: CarDTO = {
+            id: found.id,
+            licensePlate: found.licensePlate,
+            brand: found.brand,
+            model: found.model,
+            km: found.km,
+            year: found.year,
+            price: found.price,
+            createdAt: found.createdAt,
+            items: carItems.map((item: CarItem) =&gt; item.name),
+            status: found.status as Status
+        }
+&nbsp;
+        return returnValue
     }
-&nbsp;
-    @PrimaryGeneratedColumn("uuid")
-    id: string
-&nbsp;
-    @Column()
-    name: string
-  
-    @ManyToOne(() =&gt; Car, car =&gt; car.carItems)
-    @JoinColumn({ name: "carId" })
-    car: Car
-  
-    @CreateDateColumn()
-    createdAt: Date
-&nbsp;
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -180,14 +183,14 @@ export default class CarItem {
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2024-12-03T06:18:48.215Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     
