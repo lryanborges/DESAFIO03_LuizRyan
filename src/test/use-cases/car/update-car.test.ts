@@ -1,8 +1,8 @@
-import { datasource } from "../data/data-source.js"
-import { UpdateCarDTO } from "../domain/interfaces/dtos/car/update-car-dto.js"
-import { updateCar } from "../domain/use-cases/car/update-car.js"
-import CarItem from "../domain/models/car-item.js"
-import { deleteCar } from "../domain/use-cases/car/delete-car.js";
+import { datasource } from "../../../data/data-source.js"
+import { UpdateCarDTO } from "../../../domain/interfaces/dtos/car/update-car-dto.js"
+import { updateCar } from "../../../domain/use-cases/car/update-car.js"
+import CarItem from "../../../domain/models/car-item.js"
+import { deleteCar } from "../../../domain/use-cases/car/delete-car.js";
 
 describe("Update car", () => {
 

@@ -1,4 +1,4 @@
-import { findManyCar } from "../domain/use-cases/car/find-many-car.js";
+import { findManyCar } from "../../../domain/use-cases/car/find-many-car.js";
 
 describe("Find many car", () => {
     test("Should list all cars with default pagination", async () => {

@@ -1,7 +1,7 @@
-import { datasource } from "../data/data-source.js"
-import { CreateCarDTO } from "../domain/interfaces/dtos/car/create-car-dto.js"
-import CarItem from "../domain/models/car-item.js"
-import { createCar } from "../domain/use-cases/car/create-car.js"
+import { datasource } from "../../../data/data-source.js"
+import { CreateCarDTO } from "../../../domain/interfaces/dtos/car/create-car-dto.js"
+import CarItem from "../../../domain/models/car-item.js"
+import { createCar } from "../../../domain/use-cases/car/create-car.js"
 
 describe("Create car", () => {
   test("Should create a car successfully", async () => {
