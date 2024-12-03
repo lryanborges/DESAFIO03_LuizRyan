@@ -1,4 +1,4 @@
-import { findOneCar } from "../domain/use-cases/car/find-one-car.js";
+import { findOneCar } from "../../../domain/use-cases/car/find-one-car.js";
 import { v4 as uuidv4 } from "uuid";
 
 describe("Find one car", () => {

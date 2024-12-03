@@ -1,5 +1,5 @@
-import { deleteCar } from "../domain/use-cases/car/delete-car.js";
-import { findManyCar } from "../domain/use-cases/car/find-many-car.js";
+import { deleteCar } from "../../../domain/use-cases/car/delete-car.js";
+import { findManyCar } from "../../../domain/use-cases/car/find-many-car.js";
 import { v4 as uuidv4 } from "uuid";
 
 describe("Delete car", () => {
