@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for domain/use-cases/car/delete-car.ts</title>
+    <title>Code coverage report for domain/use-cases/order/create-order.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/use-cases/car</a> delete-car.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">domain/use-cases/order</a> create-order.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
@@ -82,7 +82,20 @@
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -90,34 +103,60 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ResourceNotFoundError } from "../../../framework/express/exceptions/resource-not-found-error.js"
-import { DeleteCar } from "../../interfaces/use-cases/car/delete-car.js"
-import Car from "../../models/car.js"
-import { uuidParser } from "../../parsers/uuid-parser.js"
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ResourceAlredyExistsError } from "../../../framework/express/exceptions/resource-alredy-exists-error.js"
+import { ResourceNotFoundError } from "../../../framework/express/exceptions/resource-not-found-error.js"
+import { CreateOrderDTO } from "../../interfaces/dtos/order/create-order-dto.js"
+import { CreateOrder } from "../../interfaces/use-cases/order/create-order.js"
+import Order from "../../models/order.js"
+import { createOrderParser } from "../../parsers/order/create-order-parser.js"
 import { carRepository } from "../../repositories/car-repository.js"
+import { clientRepository } from "../../repositories/client-repository.js"
+import { orderRepository } from "../../repositories/order-repository.js"
 &nbsp;
-export const deleteCar = new class implements DeleteCar{
-    async exec(id: string): Promise&lt;Car&gt; {
-        uuidParser.parse(id)
-        const car = await carRepository.findOne({ where: { id } })
-        if(!car) {
-            throw new ResourceNotFoundError("car")
-        }
-        car.status = "excluído"
-        await carRepository.save(car)
+export const createOrder = new class implements CreateOrder {
+    async exec(data: CreateOrderDTO): Promise&lt;Order&gt; {
+        const order = createOrderParser.parse(data)
 &nbsp;
-        return car;
+        const carExists = await carRepository.findOne({ where: { id: order.carId } })
+        if (!carExists) throw new ResourceNotFoundError("car")
+&nbsp;
+        const clientExists = await clientRepository.findOne({ where: { id: order.clientId } })
+        if (!clientExists) throw new ResourceNotFoundError("client")
+&nbsp;
+        const orderExists = await orderRepository.findOne({ where: { car: carExists } })
+        if (orderExists) throw new ResourceAlredyExistsError("order")
+&nbsp;
+        const newOrder = orderRepository.create({
+            ...order,
+            client: clientExists,
+            car: carExists
+        })
+&nbsp;
+        return await orderRepository.save(newOrder)
     }
 }
 &nbsp;</pre></td></tr></table></pre>
