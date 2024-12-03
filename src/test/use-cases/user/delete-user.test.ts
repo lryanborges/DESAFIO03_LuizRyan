@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 describe("Delete user", () => {
     test("Should delete a user successfully", async () => {
-        const userToDelete = await findManyUser.exec({ excluded : false });
+        const userToDelete = await findManyUser.exec({ excluded: false });
 
         expect(userToDelete).not.toBeNull();
 
